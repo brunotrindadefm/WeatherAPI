@@ -1,0 +1,23 @@
+.btn {
+    font-size: 1.7em;
+    color: white;
+}
+
+.botao {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 1em;
+    margin: 0 .2em;
+    background-color: aqua;
+}
+
+.form {
+    margin: 1.5em 0;
+}
+
+h2 {
+    background-color: aqua;
+    border-radius: 1em;
+    padding: .7em .8em;
+}

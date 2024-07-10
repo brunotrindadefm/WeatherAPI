@@ -1,0 +1,28 @@
+.barra {
+    height: 2px;
+    width: 100%;
+    background-color: aqua;
+}
+
+.tempo {
+    background: linear-gradient(to bottom, rgb(50, 190, 190), rgb(30, 219, 219), aqua );
+    padding: 1em;
+    border-radius: 20px;
+    color: #222;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+img {
+    width: 250px;
+    height: 200px;
+    border-radius: 20px;
+}
+
+.titulo {
+    margin: 0 1em;
+}
+.descricao {
+    margin: 0 1em;
+}
