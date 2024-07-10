@@ -5,8 +5,8 @@
 }
 
 .tempo {
-    background: linear-gradient(to bottom, rgb(50, 190, 190), rgb(30, 219, 219), aqua );
-    padding: 1em 2em;
+    background: linear-gradient(to bottom, rgb(50, 190, 190), rgb(30, 219, 219), aqua);
+    padding: 1.2em 2em;
     border-radius: 20px;
     color: #222;
     display: flex;
@@ -19,15 +19,50 @@ img {
     max-height: 200px;
     border-radius: 20px;
 }
-.tit {
-    margin-top: .6em;
+
+h4 {
+    color: #555;
+    font-weight: bold;
+}
+
+.data {
+    color: #888;
 }
 
 .titulo {
     margin-right: 1.5em;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
 }
-.descricao {
-    margin-left: 1.5em;
+
+.img {
+    margin-left: 1em;
+}
+
+.umidade {
+    font-size: 1.5em;
+}
+
+.temp {
+    font-weight: bold;
+    font-size: 5.8em;
+    margin: 0;
+}
+
+.celcius {
+    margin-top: 3em;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+}
+
+.celcius p {
+    background: rgba(0, 0, 0, 0.09);
+    padding: .5em;
+    border-radius: 10px;
+    color: #555;
+    font-weight: bold;
 }
 
 @media (max-width: 770px) {
@@ -35,10 +70,22 @@ img {
         flex-direction: column;
         padding: 1em 2em;
     }
+
     .titulo {
         margin: 0 0em;
     }
-    .descricao {
+    h4 {
+        text-align: center;
+    }
+    p {
+        text-align: center;
+    }
+
+    .celcius {
+        justify-content: center;
+    }
+
+    .img {
         margin: 0 0;
-    }    
+    }
 }
