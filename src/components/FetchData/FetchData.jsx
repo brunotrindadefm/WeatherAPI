@@ -7,7 +7,9 @@ import { MdOutlineLocationOn } from "react-icons/md";
 import nublado from '../img/nublado.png'
 import ensolarado from '../img/sol.png'
 import chuva from '../img/chuva.png'
-import limpo from '../img/limpo.png'
+import limpoDeDia from '../img/limpodedia.png'
+import limpoDeNoite from '../img/limpodenoite.png'
+import nevoa from '../img/nevoa.png'
 
 function FetchData({ local }) {
 
@@ -43,6 +45,7 @@ function FetchData({ local }) {
             fetchData();
         }
     }, [local])
+
     useEffect(() => {
         if (data) {
             clima();
@@ -54,10 +57,17 @@ function FetchData({ local }) {
         if (condition.includes("rain") || condition.includes("drizzle")) {
             setImg(chuva)
         } else if (condition.includes("clear")) {
-            setImg(limpo)
+            if (parseInt(data.location.localtime.substring(11,13)) < 18 && parseInt(data.location.localtime.substring(11,13)) > 5) {
+                setImg(limpoDeDia)
+            } else {
+                setImg(limpoDeNoite)
+            }
         } else if (condition.includes("cloudy") || condition.includes("overcast")) {
             setImg(nublado)
-        }else {
+        } else if (condition.includes("mist") || condition.includes("fog")) {
+            setImg(nevoa)
+        }
+        else {
             setImg(ensolarado)
         }
     }
@@ -71,7 +81,7 @@ function FetchData({ local }) {
             {data && (
                 <div className='tempo text-center my-3'>
                     <div className='titulo'>
-                        <h3><MdOutlineLocationOn />{data.location.name}</h3>
+                        <h3 className='tit'><span><MdOutlineLocationOn /></span>{data.location.name}</h3>
                         <p><img src={img} alt="imgClima" /></p>
                     </div>
                     <div className='descricao'>
@@ -80,7 +90,7 @@ function FetchData({ local }) {
                         <p><b>Região</b>: {data.location.region}</p>
                         <p><b>Temperatura</b>: {data.current.temp_c}°C</p>
                         <p><b>Umidade</b>: {data.current.humidity}%</p>
-                        <p><b>Horário</b>: {data.location.localtime}</p>
+                        <p><b>Horário</b>: {data.location.localtime.substring(11)}</p>
                     </div>
                 </div>
             )}

@@ -6,7 +6,7 @@
 
 .tempo {
     background: linear-gradient(to bottom, rgb(50, 190, 190), rgb(30, 219, 219), aqua );
-    padding: 1em;
+    padding: 1em 2em;
     border-radius: 20px;
     color: #222;
     display: flex;
@@ -15,14 +15,30 @@
 }
 
 img {
-    width: 250px;
-    height: 200px;
+    max-width: 250px;
+    max-height: 200px;
     border-radius: 20px;
+}
+.tit {
+    margin-top: .6em;
 }
 
 .titulo {
-    margin: 0 1em;
+    margin-right: 1.5em;
 }
 .descricao {
-    margin: 0 1em;
+    margin-left: 1.5em;
+}
+
+@media (max-width: 770px) {
+    .tempo {
+        flex-direction: column;
+        padding: 1em 2em;
+    }
+    .titulo {
+        margin: 0 0em;
+    }
+    .descricao {
+        margin: 0 0;
+    }    
 }
