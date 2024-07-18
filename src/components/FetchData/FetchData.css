@@ -1,6 +1,7 @@
 .barra {
     height: 2px;
-    width: 40%;
+    max-width: 400px;
+    width: 100%;
     background-color: aqua;
 }
 

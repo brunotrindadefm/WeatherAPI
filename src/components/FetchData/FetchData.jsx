@@ -47,10 +47,13 @@ function FetchData({ local }) {
         if (local) {
             fetchData();
         }
-        if(data) {
+    }, [local])
+
+    useEffect(() => {
+        if (data) {
             clima();
         }
-    }, [local])
+    }, [data])
 
     function clima() {
         const condition = data.current.condition.text.toLowerCase();
