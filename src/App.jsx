@@ -12,7 +12,7 @@ function App() {
   }
 
   return (
-    <div className='container d-flex justify-content-center align-items-center flex-column'>
+    <div className='app'>
       <Input onClick={cliquePesquisa} />
       <FetchData local={local} />
     </div>
