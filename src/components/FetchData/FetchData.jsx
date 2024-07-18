@@ -4,6 +4,9 @@ import axios from 'axios';
 import Loading from '../Loading/Loading';
 import { RiWaterPercentFill } from "react-icons/ri";
 
+import AOS from 'aos';
+import 'aos/dist/aos.css';
+
 import nublado from '../img/nublado.png'
 import ensolarado from '../img/sol.png'
 import chuva from '../img/chuva.png'
@@ -44,13 +47,10 @@ function FetchData({ local }) {
         if (local) {
             fetchData();
         }
-    }, [local])
-
-    useEffect(() => {
-        if (data) {
+        if(data) {
             clima();
         }
-    }, [data])
+    }, [local])
 
     function clima() {
         const condition = data.current.condition.text.toLowerCase();
@@ -79,7 +79,7 @@ function FetchData({ local }) {
             {loading && <div className='container d-flex align-items-center justify-content-center ' ><Loading /></div>}
             {erro && <p className='my-3 text-white'>Cidade não encontrada</p>}
             {data && (
-                <div className='tempo text-start my-3'>
+                <div data-aos="fade-right" className='tempo text-start my-3'>
                     <div className='titulo'>
                         <div>
                             <h4>{data.location.name}, {data.location.region}</h4>
