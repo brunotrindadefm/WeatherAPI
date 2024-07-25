@@ -3,7 +3,6 @@ import { useState, useEffect } from 'react'
 import axios from 'axios';
 import Loading from '../Loading/Loading';
 import { RiWaterPercentFill } from "react-icons/ri";
-
 import AOS from 'aos';
 import 'aos/dist/aos.css';
 
@@ -15,32 +14,26 @@ import limpoDeNoite from '../img/limpodenoite.png'
 import nevoa from '../img/nevoa.png'
 
 function FetchData({ local }) {
-
-
     const [img, setImg] = useState("")
-
     const apiKey = '3c92226cf2b04f5682e211951240907';
     const [data, setData] = useState(null);
     const [loading, setLoading] = useState(false)
     const [erro, setErro] = useState(null)
 
     const fetchData = async () => {
-
         setErro(null)
         setLoading(true);
         setData(null)
 
         try {
-            const response = await axios.get(`http://api.weatherapi.com/v1/current.json?key=${apiKey}&q=${local}&aqi=no&lang=pt-br`)
-
+            const response = await axios.get(`https://api.weatherapi.com/v1/current.json?key=${apiKey}&q=${local}&aqi=no&lang=pt-br`)
             setData(response.data)
             console.log(response.data)
-        } catch (erro) {
-            setErro(erro.message)
+        } catch (error) {
+            setErro(error.message)
         } finally {
             setLoading(false)
         }
-
     }
 
     useEffect(() => {
@@ -57,29 +50,25 @@ function FetchData({ local }) {
 
     function clima() {
         const condition = data.current.condition.text.toLowerCase();
+        const hour = parseInt(data.location.localtime.substring(11, 13));
+        
         if (condition.includes("rain") || condition.includes("drizzle")) {
             setImg(chuva)
         } else if (condition.includes("clear")) {
-            if (parseInt(data.location.localtime.substring(11, 13)) < 18 && parseInt(data.location.localtime.substring(11, 13)) > 5) {
-                setImg(limpoDeDia)
-            } else {
-                setImg(limpoDeNoite)
-            }
+            setImg(hour >= 6 && hour < 18 ? limpoDeDia : limpoDeNoite)
         } else if (condition.includes("cloudy") || condition.includes("overcast")) {
             setImg(nublado)
         } else if (condition.includes("mist") || condition.includes("fog")) {
             setImg(nevoa)
-        }
-        else {
+        } else {
             setImg(ensolarado)
         }
     }
 
-
     return (
         <>
             <div className='barra'></div>
-            {loading && <div className='container d-flex align-items-center justify-content-center ' ><Loading /></div>}
+            {loading && <div className='container d-flex align-items-center justify-content-center'><Loading /></div>}
             {erro && <p className='my-3 text-white'>Cidade não encontrada</p>}
             {data && (
                 <div data-aos="fade-right" className='tempo text-start my-3'>
@@ -90,7 +79,7 @@ function FetchData({ local }) {
                             <p className='data'>{data.location.localtime.substring(11)}</p>
                         </div>
                         <div>
-                            <p className='umidade '><RiWaterPercentFill /> {data.current.humidity}%</p>
+                            <p className='umidade'><RiWaterPercentFill /> {data.current.humidity}%</p>
                             <p className='temp'>{data.current.temp_c}°</p>
                         </div>
                     </div>
