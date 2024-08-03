@@ -1,4 +1,4 @@
-import './FetchData.css'
+import './FetchData.sass'
 import { useState, useEffect } from 'react'
 import axios from 'axios';
 import Loading from '../Loading/Loading';

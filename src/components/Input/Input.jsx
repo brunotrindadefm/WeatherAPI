@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react"
 import { FiSearch } from 'react-icons/fi'
-import './Input.css'
+import './Input.sass'
 
 import AOS from "aos"
 import 'aos/dist/aos.css';

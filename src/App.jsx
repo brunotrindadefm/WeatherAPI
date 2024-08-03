@@ -1,4 +1,4 @@
-import './index.css'
+import './index.sass'
 import Input from './components/Input/Input'
 import FetchData from './components/FetchData/FetchData'
 import { useState } from 'react'
